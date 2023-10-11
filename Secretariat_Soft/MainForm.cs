@@ -11,5 +11,15 @@
         {
 
         }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MinBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
