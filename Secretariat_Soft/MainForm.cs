@@ -21,5 +21,10 @@
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void data_entry_butt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
