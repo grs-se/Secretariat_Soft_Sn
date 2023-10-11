@@ -29,18 +29,25 @@
         private void InitializeComponent()
         {
             TopPanel = new Panel();
+            help_butt = new Button();
+            tools_butt = new Button();
+            reports_butt = new Button();
+            data_entry_butt = new Button();
             min_btn = new Button();
             close_btn = new Button();
             SidePanel = new Panel();
             bottom_panel = new Panel();
-            data_entry_butt = new Button();
-            reports_butt = new Button();
-            tools_butt = new Button();
-            help_butt = new Button();
-            bg_changer_button5 = new Button();
             button6 = new Button();
+            bg_changer_button5 = new Button();
+            panel1 = new Panel();
+            day_week_lbl = new Label();
+            day_month_lbl = new Label();
+            month_name_lbl = new Label();
+            Year_num_lbl = new Label();
             TopPanel.SuspendLayout();
+            SidePanel.SuspendLayout();
             bottom_panel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -58,6 +65,87 @@
             TopPanel.Size = new Size(899, 75);
             TopPanel.TabIndex = 1;
             TopPanel.Paint += TopPanel_Paint;
+            // 
+            // help_butt
+            // 
+            help_butt.BackColor = Color.Transparent;
+            help_butt.BackgroundImage = Properties.Resources.butt_background;
+            help_butt.BackgroundImageLayout = ImageLayout.Stretch;
+            help_butt.Cursor = Cursors.Hand;
+            help_butt.FlatAppearance.BorderSize = 0;
+            help_butt.FlatStyle = FlatStyle.Flat;
+            help_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            help_butt.Image = Properties.Resources.top_Help_butt;
+            help_butt.ImageAlign = ContentAlignment.TopCenter;
+            help_butt.Location = new Point(325, 12);
+            help_butt.Margin = new Padding(3, 2, 3, 2);
+            help_butt.Name = "help_butt";
+            help_butt.Size = new Size(98, 52);
+            help_butt.TabIndex = 6;
+            help_butt.Text = "Help F5";
+            help_butt.TextAlign = ContentAlignment.BottomCenter;
+            help_butt.UseVisualStyleBackColor = false;
+            // 
+            // tools_butt
+            // 
+            tools_butt.BackColor = Color.Transparent;
+            tools_butt.BackgroundImage = Properties.Resources.butt_background;
+            tools_butt.BackgroundImageLayout = ImageLayout.Stretch;
+            tools_butt.Cursor = Cursors.Hand;
+            tools_butt.FlatAppearance.BorderSize = 0;
+            tools_butt.FlatStyle = FlatStyle.Flat;
+            tools_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            tools_butt.Image = Properties.Resources.top_Tools_butt;
+            tools_butt.ImageAlign = ContentAlignment.TopCenter;
+            tools_butt.Location = new Point(221, 12);
+            tools_butt.Margin = new Padding(3, 2, 3, 2);
+            tools_butt.Name = "tools_butt";
+            tools_butt.Size = new Size(98, 52);
+            tools_butt.TabIndex = 5;
+            tools_butt.Text = "Tools F4";
+            tools_butt.TextAlign = ContentAlignment.BottomCenter;
+            tools_butt.UseVisualStyleBackColor = false;
+            // 
+            // reports_butt
+            // 
+            reports_butt.BackColor = Color.Transparent;
+            reports_butt.BackgroundImage = Properties.Resources.butt_background;
+            reports_butt.BackgroundImageLayout = ImageLayout.Stretch;
+            reports_butt.Cursor = Cursors.Hand;
+            reports_butt.FlatAppearance.BorderSize = 0;
+            reports_butt.FlatStyle = FlatStyle.Flat;
+            reports_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            reports_butt.Image = Properties.Resources.top_report_butt;
+            reports_butt.ImageAlign = ContentAlignment.TopCenter;
+            reports_butt.Location = new Point(117, 12);
+            reports_butt.Margin = new Padding(3, 2, 3, 2);
+            reports_butt.Name = "reports_butt";
+            reports_butt.Size = new Size(98, 52);
+            reports_butt.TabIndex = 4;
+            reports_butt.Text = "Reports F3";
+            reports_butt.TextAlign = ContentAlignment.BottomCenter;
+            reports_butt.UseVisualStyleBackColor = false;
+            // 
+            // data_entry_butt
+            // 
+            data_entry_butt.BackColor = Color.Transparent;
+            data_entry_butt.BackgroundImage = Properties.Resources.butt_background;
+            data_entry_butt.BackgroundImageLayout = ImageLayout.Stretch;
+            data_entry_butt.Cursor = Cursors.Hand;
+            data_entry_butt.FlatAppearance.BorderSize = 0;
+            data_entry_butt.FlatStyle = FlatStyle.Flat;
+            data_entry_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            data_entry_butt.Image = Properties.Resources.top_input_butt;
+            data_entry_butt.ImageAlign = ContentAlignment.TopCenter;
+            data_entry_butt.Location = new Point(6, 12);
+            data_entry_butt.Margin = new Padding(3, 2, 3, 2);
+            data_entry_butt.Name = "data_entry_butt";
+            data_entry_butt.Size = new Size(105, 52);
+            data_entry_butt.TabIndex = 3;
+            data_entry_butt.Text = "Data Entry F2";
+            data_entry_butt.TextAlign = ContentAlignment.BottomCenter;
+            data_entry_butt.UseVisualStyleBackColor = false;
+            data_entry_butt.Click += data_entry_butt_Click;
             // 
             // min_btn
             // 
@@ -88,6 +176,7 @@
             // SidePanel
             // 
             SidePanel.BackColor = Color.Gainsboro;
+            SidePanel.Controls.Add(panel1);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.Location = new Point(0, 0);
             SidePanel.Name = "SidePanel";
@@ -104,86 +193,19 @@
             bottom_panel.Size = new Size(899, 40);
             bottom_panel.TabIndex = 3;
             // 
-            // data_entry_butt
+            // button6
             // 
-            data_entry_butt.BackColor = Color.Transparent;
-            data_entry_butt.BackgroundImage = Properties.Resources.butt_background;
-            data_entry_butt.BackgroundImageLayout = ImageLayout.Stretch;
-            data_entry_butt.Cursor = Cursors.Hand;
-            data_entry_butt.FlatAppearance.BorderSize = 0;
-            data_entry_butt.FlatStyle = FlatStyle.Flat;
-            data_entry_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            data_entry_butt.Image = Properties.Resources.top_input_butt;
-            data_entry_butt.ImageAlign = ContentAlignment.TopCenter;
-            data_entry_butt.Location = new Point(6, 12);
-            data_entry_butt.Margin = new Padding(3, 2, 3, 2);
-            data_entry_butt.Name = "data_entry_butt";
-            data_entry_butt.Size = new Size(105, 52);
-            data_entry_butt.TabIndex = 3;
-            data_entry_butt.Text = "Data Entry F2";
-            data_entry_butt.TextAlign = ContentAlignment.BottomCenter;
-            data_entry_butt.UseVisualStyleBackColor = false;
-            data_entry_butt.Click += data_entry_butt_Click;
-            // 
-            // reports_butt
-            // 
-            reports_butt.BackColor = Color.Transparent;
-            reports_butt.BackgroundImage = Properties.Resources.butt_background;
-            reports_butt.BackgroundImageLayout = ImageLayout.Stretch;
-            reports_butt.Cursor = Cursors.Hand;
-            reports_butt.FlatAppearance.BorderSize = 0;
-            reports_butt.FlatStyle = FlatStyle.Flat;
-            reports_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            reports_butt.Image = Properties.Resources.top_report_butt;
-            reports_butt.ImageAlign = ContentAlignment.TopCenter;
-            reports_butt.Location = new Point(117, 12);
-            reports_butt.Margin = new Padding(3, 2, 3, 2);
-            reports_butt.Name = "reports_butt";
-            reports_butt.Size = new Size(98, 52);
-            reports_butt.TabIndex = 4;
-            reports_butt.Text = "Reports F3";
-            reports_butt.TextAlign = ContentAlignment.BottomCenter;
-            reports_butt.UseVisualStyleBackColor = false;
-            // 
-            // tools_butt
-            // 
-            tools_butt.BackColor = Color.Transparent;
-            tools_butt.BackgroundImage = Properties.Resources.butt_background;
-            tools_butt.BackgroundImageLayout = ImageLayout.Stretch;
-            tools_butt.Cursor = Cursors.Hand;
-            tools_butt.FlatAppearance.BorderSize = 0;
-            tools_butt.FlatStyle = FlatStyle.Flat;
-            tools_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            tools_butt.Image = Properties.Resources.top_Tools_butt;
-            tools_butt.ImageAlign = ContentAlignment.TopCenter;
-            tools_butt.Location = new Point(221, 12);
-            tools_butt.Margin = new Padding(3, 2, 3, 2);
-            tools_butt.Name = "tools_butt";
-            tools_butt.Size = new Size(98, 52);
-            tools_butt.TabIndex = 5;
-            tools_butt.Text = "Tools F4";
-            tools_butt.TextAlign = ContentAlignment.BottomCenter;
-            tools_butt.UseVisualStyleBackColor = false;
-            // 
-            // help_butt
-            // 
-            help_butt.BackColor = Color.Transparent;
-            help_butt.BackgroundImage = Properties.Resources.butt_background;
-            help_butt.BackgroundImageLayout = ImageLayout.Stretch;
-            help_butt.Cursor = Cursors.Hand;
-            help_butt.FlatAppearance.BorderSize = 0;
-            help_butt.FlatStyle = FlatStyle.Flat;
-            help_butt.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            help_butt.Image = Properties.Resources.top_Help_butt;
-            help_butt.ImageAlign = ContentAlignment.TopCenter;
-            help_butt.Location = new Point(325, 12);
-            help_butt.Margin = new Padding(3, 2, 3, 2);
-            help_butt.Name = "help_butt";
-            help_butt.Size = new Size(98, 52);
-            help_butt.TabIndex = 6;
-            help_butt.Text = "Help F5";
-            help_butt.TextAlign = ContentAlignment.BottomCenter;
-            help_butt.UseVisualStyleBackColor = false;
+            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button6.BackgroundImage = Properties.Resources.butt_background;
+            button6.BackgroundImageLayout = ImageLayout.Stretch;
+            button6.Cursor = Cursors.Hand;
+            button6.Image = Properties.Resources.calc_butt;
+            button6.Location = new Point(743, 8);
+            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Name = "button6";
+            button6.Size = new Size(33, 24);
+            button6.TabIndex = 2;
+            button6.UseVisualStyleBackColor = true;
             // 
             // bg_changer_button5
             // 
@@ -201,19 +223,69 @@
             bg_changer_button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             bg_changer_button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // panel1
             // 
-            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button6.BackgroundImage = Properties.Resources.butt_background;
-            button6.BackgroundImageLayout = ImageLayout.Stretch;
-            button6.Cursor = Cursors.Hand;
-            button6.Image = Properties.Resources.calc_butt;
-            button6.Location = new Point(743, 8);
-            button6.Margin = new Padding(3, 2, 3, 2);
-            button6.Name = "button6";
-            button6.Size = new Size(33, 24);
-            button6.TabIndex = 2;
-            button6.UseVisualStyleBackColor = true;
+            panel1.BackgroundImage = Properties.Resources.calendar;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(day_week_lbl);
+            panel1.Controls.Add(day_month_lbl);
+            panel1.Controls.Add(month_name_lbl);
+            panel1.Controls.Add(Year_num_lbl);
+            panel1.Location = new Point(6, 182);
+            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(167, 138);
+            panel1.TabIndex = 1;
+            // 
+            // day_week_lbl
+            // 
+            day_week_lbl.BackColor = Color.Transparent;
+            day_week_lbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            day_week_lbl.ForeColor = Color.Black;
+            day_week_lbl.Location = new Point(17, 97);
+            day_week_lbl.Name = "day_week_lbl";
+            day_week_lbl.Size = new Size(130, 27);
+            day_week_lbl.TabIndex = 3;
+            day_week_lbl.Text = "Wednesday";
+            day_week_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // day_month_lbl
+            // 
+            day_month_lbl.BackColor = Color.Transparent;
+            day_month_lbl.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            day_month_lbl.ForeColor = Color.Black;
+            day_month_lbl.Location = new Point(17, 57);
+            day_month_lbl.Name = "day_month_lbl";
+            day_month_lbl.Size = new Size(130, 31);
+            day_month_lbl.TabIndex = 2;
+            day_month_lbl.Text = "11";
+            day_month_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // month_name_lbl
+            // 
+            month_name_lbl.AutoSize = true;
+            month_name_lbl.BackColor = Color.Transparent;
+            month_name_lbl.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            month_name_lbl.ForeColor = Color.White;
+            month_name_lbl.Location = new Point(83, 29);
+            month_name_lbl.Name = "month_name_lbl";
+            month_name_lbl.Size = new Size(64, 19);
+            month_name_lbl.TabIndex = 1;
+            month_name_lbl.Text = "October";
+            month_name_lbl.Click += month_name_lbl_Click;
+            // 
+            // Year_num_lbl
+            // 
+            Year_num_lbl.AutoSize = true;
+            Year_num_lbl.BackColor = Color.Transparent;
+            Year_num_lbl.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Year_num_lbl.ForeColor = Color.White;
+            Year_num_lbl.Location = new Point(11, 29);
+            Year_num_lbl.Name = "Year_num_lbl";
+            Year_num_lbl.Size = new Size(41, 19);
+            Year_num_lbl.TabIndex = 0;
+            Year_num_lbl.Text = "2023";
+            Year_num_lbl.Click += Year_num_lbl_Click;
             // 
             // MainForm
             // 
@@ -232,8 +304,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main Form";
             WindowState = FormWindowState.Maximized;
+            Load += MainForm_Load;
             TopPanel.ResumeLayout(false);
+            SidePanel.ResumeLayout(false);
             bottom_panel.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -250,5 +326,10 @@
         private Button help_butt;
         private Button bg_changer_button5;
         private Button button6;
+        private Panel panel1;
+        private Label day_week_lbl;
+        private Label day_month_lbl;
+        private Label month_name_lbl;
+        private Label Year_num_lbl;
     }
 }

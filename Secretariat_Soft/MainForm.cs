@@ -26,5 +26,33 @@
         {
 
         }
+
+        private void Year_num_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void month_name_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //-------------load date----------------
+            get_date_cal();
+            //--------------------------------------
+        }
+
+        void get_date_cal()
+        {
+            this.Year_num_lbl.Text = System.DateTime.Now.Year.ToString();
+            int mn = System.DateTime.Now.Month;
+            string month_name;
+            month_name = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mn);
+            this.month_name_lbl.Text = month_name;
+            this.day_month_lbl.Text = System.DateTime.Now.Day.ToString();
+            this.day_week_lbl.Text = System.DateTime.Now.DayOfWeek.ToString();
+        }
     }
 }
