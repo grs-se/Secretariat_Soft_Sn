@@ -30,9 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             TreeNode treeNode1 = new TreeNode("Incoming Letters");
-            TreeNode treeNode2 = new TreeNode("Outgoing Letters", 1, 1);
+            TreeNode treeNode2 = new TreeNode("Outgoing Letters");
             TreeNode treeNode3 = new TreeNode("My Letters", 0, 0, new TreeNode[] { treeNode1, treeNode2 });
-            TreeNode treeNode4 = new TreeNode("All Folders", 2, 2, new TreeNode[] { treeNode3 });
+            TreeNode treeNode4 = new TreeNode("All Folders", 1, 1, new TreeNode[] { treeNode3 });
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             TopPanel = new Panel();
             help_butt = new Button();
             tools_butt = new Button();
@@ -55,6 +56,7 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             timer1 = new System.Windows.Forms.Timer(components);
             MainTree_View = new TreeView();
+            imageList1 = new ImageList(components);
             Tree_Panel = new Panel();
             button2 = new Button();
             button1 = new Button();
@@ -268,10 +270,10 @@
             panel1.Controls.Add(day_month_lbl);
             panel1.Controls.Add(month_name_lbl);
             panel1.Controls.Add(Year_num_lbl);
-            panel1.Location = new Point(6, 182);
+            panel1.Location = new Point(12, 182);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(167, 138);
+            panel1.Size = new Size(154, 138);
             panel1.TabIndex = 1;
             // 
             // day_week_lbl
@@ -304,7 +306,7 @@
             month_name_lbl.BackColor = Color.Transparent;
             month_name_lbl.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             month_name_lbl.ForeColor = Color.White;
-            month_name_lbl.Location = new Point(83, 29);
+            month_name_lbl.Location = new Point(71, 29);
             month_name_lbl.Name = "month_name_lbl";
             month_name_lbl.Size = new Size(64, 19);
             month_name_lbl.TabIndex = 1;
@@ -374,7 +376,9 @@
             // 
             MainTree_View.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             MainTree_View.ForeColor = Color.Black;
-            MainTree_View.Indent = 40;
+            MainTree_View.ImageIndex = 0;
+            MainTree_View.ImageList = imageList1;
+            MainTree_View.Indent = 35;
             MainTree_View.ItemHeight = 45;
             MainTree_View.Location = new Point(3, 5);
             MainTree_View.Margin = new Padding(3, 2, 3, 2);
@@ -383,30 +387,41 @@
             treeNode1.Name = "Incoming_Letters";
             treeNode1.SelectedImageKey = "review.png";
             treeNode1.Text = "Incoming Letters";
-            treeNode2.ImageIndex = 1;
+            treeNode2.ImageKey = "kToolStripButton2.Image.png";
             treeNode2.Name = "Outgoing_Letters";
-            treeNode2.SelectedImageIndex = 1;
+            treeNode2.SelectedImageKey = "kToolStripButton2.Image.png";
             treeNode2.Text = "Outgoing Letters";
             treeNode3.ImageIndex = 0;
             treeNode3.Name = "My_Letters";
             treeNode3.SelectedImageIndex = 0;
             treeNode3.Text = "My Letters";
-            treeNode4.ImageIndex = 2;
+            treeNode4.ImageIndex = 1;
             treeNode4.Name = "All_Folders";
-            treeNode4.SelectedImageIndex = 2;
+            treeNode4.SelectedImageIndex = 1;
             treeNode4.Text = "All Folders";
             MainTree_View.Nodes.AddRange(new TreeNode[] { treeNode4 });
+            MainTree_View.SelectedImageIndex = 0;
             MainTree_View.Size = new Size(308, 344);
             MainTree_View.TabIndex = 5;
             MainTree_View.AfterSelect += TreePanel_AfterSelect;
             // 
-            // tree_panel
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "dep_1.png");
+            imageList1.Images.SetKeyName(1, "RadMenuItem2.png");
+            imageList1.Images.SetKeyName(2, "review.png");
+            imageList1.Images.SetKeyName(3, "kToolStripButton2.Image.png");
+            // 
+            // Tree_Panel
             // 
             Tree_Panel.Controls.Add(button2);
             Tree_Panel.Controls.Add(button1);
             Tree_Panel.Controls.Add(MainTree_View);
             Tree_Panel.Location = new Point(186, 80);
-            Tree_Panel.Name = "tree_panel";
+            Tree_Panel.Name = "Tree_Panel";
             Tree_Panel.Size = new Size(314, 355);
             Tree_Panel.TabIndex = 7;
             // 
@@ -490,5 +505,6 @@
         private Panel Tree_Panel;
         private Button button1;
         private Button button2;
+        private ImageList imageList1;
     }
 }
