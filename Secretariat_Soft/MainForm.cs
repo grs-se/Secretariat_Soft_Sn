@@ -54,5 +54,15 @@
             this.day_month_lbl.Text = System.DateTime.Now.Day.ToString();
             this.day_week_lbl.Text = System.DateTime.Now.DayOfWeek.ToString();
         }
+
+        private void analogClock1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.analogClock1.Time = System.DateTime.Now;
+        }
     }
 }
