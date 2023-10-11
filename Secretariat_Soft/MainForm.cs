@@ -22,9 +22,9 @@
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void data_entry_butt_Click(object sender, EventArgs e)
+        private void DataEntryBtn_Click(object sender, EventArgs e)
         {
-
+            this.Tree_Panel.Visible = !this.Tree_Panel.Visible;
         }
 
         private void Year_num_lbl_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@
 
         }
 
-        private void month_name_lbl_Click(object sender, EventArgs e)
+        private void Month_name_lbl_Click(object sender, EventArgs e)
         {
 
         }
@@ -40,11 +40,13 @@
         private void MainForm_Load(object sender, EventArgs e)
         {
             //-------------load date----------------
-            get_date_cal();
+            Get_date_cal();
             //--------------------------------------
+            this.Tree_Panel.Visible = false;
+            this.MainTree_View.ExpandAll();
         }
 
-        void get_date_cal()
+        void Get_date_cal()
         {
             this.Year_num_lbl.Text = System.DateTime.Now.Year.ToString();
             int mn = System.DateTime.Now.Month;
@@ -55,14 +57,34 @@
             this.day_week_lbl.Text = System.DateTime.Now.DayOfWeek.ToString();
         }
 
-        private void analogClock1_Load(object sender, EventArgs e)
+        private void AnalogClock1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             this.analogClock1.Time = System.DateTime.Now;
+        }
+
+        private void User_name_lbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TreePanel_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void ExpandBtn_Click(object sender, EventArgs e)
+        {
+            this.MainTree_View.ExpandAll();
+        }
+
+        private void CollapseBtn_Click(object sender, EventArgs e)
+        {
+            this.MainTree_View.CollapseAll();
         }
     }
 }

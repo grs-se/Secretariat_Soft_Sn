@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            TreeNode treeNode1 = new TreeNode("Incoming Letters");
+            TreeNode treeNode2 = new TreeNode("Outgoing Letters", 1, 1);
+            TreeNode treeNode3 = new TreeNode("My Letters", 0, 0, new TreeNode[] { treeNode1, treeNode2 });
+            TreeNode treeNode4 = new TreeNode("All Folders", 2, 2, new TreeNode[] { treeNode3 });
             TopPanel = new Panel();
             help_butt = new Button();
             tools_butt = new Button();
@@ -37,6 +41,8 @@
             min_btn = new Button();
             close_btn = new Button();
             SidePanel = new Panel();
+            User_name_lbl = new Label();
+            User_image_Pic = new PictureBox();
             analogClock1 = new AnalogClock.AnalogClock();
             panel1 = new Panel();
             day_week_lbl = new Label();
@@ -48,10 +54,16 @@
             bg_changer_button5 = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             timer1 = new System.Windows.Forms.Timer(components);
+            MainTree_View = new TreeView();
+            Tree_Panel = new Panel();
+            button2 = new Button();
+            button1 = new Button();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)User_image_Pic).BeginInit();
             panel1.SuspendLayout();
             bottom_panel.SuspendLayout();
+            Tree_Panel.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -149,7 +161,7 @@
             data_entry_butt.Text = "Data Entry F2";
             data_entry_butt.TextAlign = ContentAlignment.BottomCenter;
             data_entry_butt.UseVisualStyleBackColor = false;
-            data_entry_butt.Click += data_entry_butt_Click;
+            data_entry_butt.Click += DataEntryBtn_Click;
             // 
             // min_btn
             // 
@@ -180,6 +192,8 @@
             // SidePanel
             // 
             SidePanel.BackColor = Color.Gainsboro;
+            SidePanel.Controls.Add(User_name_lbl);
+            SidePanel.Controls.Add(User_image_Pic);
             SidePanel.Controls.Add(analogClock1);
             SidePanel.Controls.Add(panel1);
             SidePanel.Dock = DockStyle.Left;
@@ -187,6 +201,30 @@
             SidePanel.Name = "SidePanel";
             SidePanel.Size = new Size(180, 768);
             SidePanel.TabIndex = 2;
+            // 
+            // User_name_lbl
+            // 
+            User_name_lbl.BorderStyle = BorderStyle.FixedSingle;
+            User_name_lbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            User_name_lbl.Location = new Point(34, 437);
+            User_name_lbl.Name = "User_name_lbl";
+            User_name_lbl.Size = new Size(113, 19);
+            User_name_lbl.TabIndex = 4;
+            User_name_lbl.Text = "Robert";
+            User_name_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            User_name_lbl.Click += User_name_lbl_Click;
+            // 
+            // User_image_Pic
+            // 
+            User_image_Pic.BorderStyle = BorderStyle.FixedSingle;
+            User_image_Pic.Image = Properties.Resources.Default_user;
+            User_image_Pic.Location = new Point(34, 334);
+            User_image_Pic.Margin = new Padding(3, 2, 3, 2);
+            User_image_Pic.Name = "User_image_Pic";
+            User_image_Pic.Size = new Size(113, 101);
+            User_image_Pic.SizeMode = PictureBoxSizeMode.Zoom;
+            User_image_Pic.TabIndex = 3;
+            User_image_Pic.TabStop = false;
             // 
             // analogClock1
             // 
@@ -220,7 +258,7 @@
             analogClock1.Size = new Size(154, 154);
             analogClock1.TabIndex = 2;
             analogClock1.Time = new DateTime(0L);
-            analogClock1.Load += analogClock1_Load;
+            analogClock1.Load += AnalogClock1_Load;
             // 
             // panel1
             // 
@@ -271,7 +309,7 @@
             month_name_lbl.Size = new Size(64, 19);
             month_name_lbl.TabIndex = 1;
             month_name_lbl.Text = "October";
-            month_name_lbl.Click += month_name_lbl_Click;
+            month_name_lbl.Click += Month_name_lbl_Click;
             // 
             // Year_num_lbl
             // 
@@ -330,13 +368,78 @@
             // 
             timer1.Enabled = true;
             timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
+            timer1.Tick += Timer1_Tick;
+            // 
+            // MainTree_View
+            // 
+            MainTree_View.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            MainTree_View.ForeColor = Color.Black;
+            MainTree_View.Indent = 40;
+            MainTree_View.ItemHeight = 45;
+            MainTree_View.Location = new Point(3, 5);
+            MainTree_View.Margin = new Padding(3, 2, 3, 2);
+            MainTree_View.Name = "MainTree_View";
+            treeNode1.ImageKey = "review.png";
+            treeNode1.Name = "Incoming_Letters";
+            treeNode1.SelectedImageKey = "review.png";
+            treeNode1.Text = "Incoming Letters";
+            treeNode2.ImageIndex = 1;
+            treeNode2.Name = "Outgoing_Letters";
+            treeNode2.SelectedImageIndex = 1;
+            treeNode2.Text = "Outgoing Letters";
+            treeNode3.ImageIndex = 0;
+            treeNode3.Name = "My_Letters";
+            treeNode3.SelectedImageIndex = 0;
+            treeNode3.Text = "My Letters";
+            treeNode4.ImageIndex = 2;
+            treeNode4.Name = "All_Folders";
+            treeNode4.SelectedImageIndex = 2;
+            treeNode4.Text = "All Folders";
+            MainTree_View.Nodes.AddRange(new TreeNode[] { treeNode4 });
+            MainTree_View.Size = new Size(308, 344);
+            MainTree_View.TabIndex = 5;
+            MainTree_View.AfterSelect += TreePanel_AfterSelect;
+            // 
+            // tree_panel
+            // 
+            Tree_Panel.Controls.Add(button2);
+            Tree_Panel.Controls.Add(button1);
+            Tree_Panel.Controls.Add(MainTree_View);
+            Tree_Panel.Location = new Point(186, 80);
+            Tree_Panel.Name = "tree_panel";
+            Tree_Panel.Size = new Size(314, 355);
+            Tree_Panel.TabIndex = 7;
+            // 
+            // button2
+            // 
+            button2.Cursor = Cursors.Hand;
+            button2.Image = Properties.Resources.collapse;
+            button2.Location = new Point(279, 15);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(27, 20);
+            button2.TabIndex = 11;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += CollapseBtn_Click;
+            // 
+            // button1
+            // 
+            button1.Cursor = Cursors.Hand;
+            button1.Image = Properties.Resources.expand;
+            button1.Location = new Point(249, 15);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(27, 20);
+            button1.TabIndex = 10;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += ExpandBtn_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1079, 768);
+            Controls.Add(Tree_Panel);
             Controls.Add(TopPanel);
             Controls.Add(bottom_panel);
             Controls.Add(SidePanel);
@@ -352,9 +455,11 @@
             Load += MainForm_Load;
             TopPanel.ResumeLayout(false);
             SidePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)User_image_Pic).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             bottom_panel.ResumeLayout(false);
+            Tree_Panel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -379,5 +484,11 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private AnalogClock.AnalogClock analogClock1;
         private System.Windows.Forms.Timer timer1;
+        private PictureBox User_image_Pic;
+        private Label User_name_lbl;
+        private TreeView MainTree_View;
+        private Panel Tree_Panel;
+        private Button button1;
+        private Button button2;
     }
 }
