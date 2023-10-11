@@ -36,18 +36,20 @@
             min_btn = new Button();
             close_btn = new Button();
             SidePanel = new Panel();
-            bottom_panel = new Panel();
-            button6 = new Button();
-            bg_changer_button5 = new Button();
             panel1 = new Panel();
             day_week_lbl = new Label();
             day_month_lbl = new Label();
             month_name_lbl = new Label();
             Year_num_lbl = new Label();
+            bottom_panel = new Panel();
+            button6 = new Button();
+            bg_changer_button5 = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            analogClock1 = new AnalogClock.AnalogClock();
             TopPanel.SuspendLayout();
             SidePanel.SuspendLayout();
-            bottom_panel.SuspendLayout();
             panel1.SuspendLayout();
+            bottom_panel.SuspendLayout();
             SuspendLayout();
             // 
             // TopPanel
@@ -176,52 +178,13 @@
             // SidePanel
             // 
             SidePanel.BackColor = Color.Gainsboro;
+            SidePanel.Controls.Add(analogClock1);
             SidePanel.Controls.Add(panel1);
             SidePanel.Dock = DockStyle.Left;
             SidePanel.Location = new Point(0, 0);
             SidePanel.Name = "SidePanel";
             SidePanel.Size = new Size(180, 768);
             SidePanel.TabIndex = 2;
-            // 
-            // bottom_panel
-            // 
-            bottom_panel.Controls.Add(button6);
-            bottom_panel.Controls.Add(bg_changer_button5);
-            bottom_panel.Dock = DockStyle.Bottom;
-            bottom_panel.Location = new Point(180, 728);
-            bottom_panel.Name = "bottom_panel";
-            bottom_panel.Size = new Size(899, 40);
-            bottom_panel.TabIndex = 3;
-            // 
-            // button6
-            // 
-            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button6.BackgroundImage = Properties.Resources.butt_background;
-            button6.BackgroundImageLayout = ImageLayout.Stretch;
-            button6.Cursor = Cursors.Hand;
-            button6.Image = Properties.Resources.calc_butt;
-            button6.Location = new Point(743, 8);
-            button6.Margin = new Padding(3, 2, 3, 2);
-            button6.Name = "button6";
-            button6.Size = new Size(33, 24);
-            button6.TabIndex = 2;
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // bg_changer_button5
-            // 
-            bg_changer_button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bg_changer_button5.BackgroundImage = Properties.Resources.butt_background;
-            bg_changer_button5.BackgroundImageLayout = ImageLayout.Stretch;
-            bg_changer_button5.Cursor = Cursors.Hand;
-            bg_changer_button5.Image = Properties.Resources.background;
-            bg_changer_button5.Location = new Point(782, 8);
-            bg_changer_button5.Margin = new Padding(3, 2, 3, 2);
-            bg_changer_button5.Name = "bg_changer_button5";
-            bg_changer_button5.Size = new Size(105, 24);
-            bg_changer_button5.TabIndex = 1;
-            bg_changer_button5.Text = "Background";
-            bg_changer_button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            bg_changer_button5.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -287,6 +250,79 @@
             Year_num_lbl.Text = "2023";
             Year_num_lbl.Click += Year_num_lbl_Click;
             // 
+            // bottom_panel
+            // 
+            bottom_panel.Controls.Add(button6);
+            bottom_panel.Controls.Add(bg_changer_button5);
+            bottom_panel.Dock = DockStyle.Bottom;
+            bottom_panel.Location = new Point(180, 728);
+            bottom_panel.Name = "bottom_panel";
+            bottom_panel.Size = new Size(899, 40);
+            bottom_panel.TabIndex = 3;
+            // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button6.BackgroundImage = Properties.Resources.butt_background;
+            button6.BackgroundImageLayout = ImageLayout.Stretch;
+            button6.Cursor = Cursors.Hand;
+            button6.Image = Properties.Resources.calc_butt;
+            button6.Location = new Point(743, 8);
+            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Name = "button6";
+            button6.Size = new Size(33, 24);
+            button6.TabIndex = 2;
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // bg_changer_button5
+            // 
+            bg_changer_button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bg_changer_button5.BackgroundImage = Properties.Resources.butt_background;
+            bg_changer_button5.BackgroundImageLayout = ImageLayout.Stretch;
+            bg_changer_button5.Cursor = Cursors.Hand;
+            bg_changer_button5.Image = Properties.Resources.background;
+            bg_changer_button5.Location = new Point(782, 8);
+            bg_changer_button5.Margin = new Padding(3, 2, 3, 2);
+            bg_changer_button5.Name = "bg_changer_button5";
+            bg_changer_button5.Size = new Size(105, 24);
+            bg_changer_button5.TabIndex = 1;
+            bg_changer_button5.Text = "Background";
+            bg_changer_button5.TextImageRelation = TextImageRelation.ImageBeforeText;
+            bg_changer_button5.UseVisualStyleBackColor = true;
+            // 
+            // analogClock1
+            // 
+            analogClock1.DrawHourHand = true;
+            analogClock1.DrawHourHandShadow = true;
+            analogClock1.DrawMinuteHand = true;
+            analogClock1.DrawMinuteHandShadow = true;
+            analogClock1.DrawSecondHand = true;
+            analogClock1.DropShadowColor = Color.Black;
+            analogClock1.DropShadowOffset = new Point(0, 0);
+            analogClock1.FaceColorHigh = Color.RoyalBlue;
+            analogClock1.FaceColorLow = Color.SkyBlue;
+            analogClock1.FaceGradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            analogClock1.FaceImage = null;
+            analogClock1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            analogClock1.HourHandColor = Color.Gainsboro;
+            analogClock1.HourHandDropShadowColor = Color.Gray;
+            analogClock1.Location = new Point(12, 12);
+            analogClock1.MinuteHandColor = Color.WhiteSmoke;
+            analogClock1.MinuteHandDropShadowColor = Color.Gray;
+            analogClock1.MinuteHandTickStyle = AnalogClock.TickStyle.Normal;
+            analogClock1.Name = "analogClock1";
+            analogClock1.NumeralColor = Color.WhiteSmoke;
+            analogClock1.RimColorHigh = Color.RoyalBlue;
+            analogClock1.RimColorLow = Color.SkyBlue;
+            analogClock1.RimGradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+            analogClock1.SecondHandColor = Color.Tomato;
+            analogClock1.SecondHandDropShadowColor = Color.Gray;
+            analogClock1.SecondHandEndCap = System.Drawing.Drawing2D.LineCap.Round;
+            analogClock1.SecondHandTickStyle = AnalogClock.TickStyle.Normal;
+            analogClock1.Size = new Size(154, 154);
+            analogClock1.TabIndex = 2;
+            analogClock1.Time = new DateTime(0L);
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -307,9 +343,9 @@
             Load += MainForm_Load;
             TopPanel.ResumeLayout(false);
             SidePanel.ResumeLayout(false);
-            bottom_panel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            bottom_panel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -331,5 +367,7 @@
         private Label day_month_lbl;
         private Label month_name_lbl;
         private Label Year_num_lbl;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private AnalogClock.AnalogClock analogClock1;
     }
 }

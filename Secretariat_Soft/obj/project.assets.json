@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net7.0-windows7.0": {}
+    "net7.0-windows7.0": {
+      "AnalogClock/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/AnalogClock.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnalogClock.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "AnalogClock/1.0.0": {
+      "type": "project",
+      "path": "../AnalogClock.NET6/AnalogClock.csproj",
+      "msbuildProject": "../AnalogClock.NET6/AnalogClock.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0-windows7.0": []
+    "net7.0-windows7.0": [
+      "AnalogClock >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\georg\\.nuget\\packages\\": {},
@@ -38,7 +60,11 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\georg\\source\\repos\\Secretariat_Soft_Sn\\AnalogClock.NET6\\AnalogClock.csproj": {
+              "projectPath": "C:\\Users\\georg\\source\\repos\\Secretariat_Soft_Sn\\AnalogClock.NET6\\AnalogClock.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
